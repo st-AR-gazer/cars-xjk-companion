@@ -1,0 +1,176 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+            framework: net8.0-windows
+            runtime: win-x64
+          - name: Linux
+            os: ubuntu-latest
+            framework: net8.0
+            runtime: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install .NET 8 SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore selected target
+        run: dotnet restore MoreCars.Companion.csproj --runtime ${{ matrix.runtime }} -p:TargetFramework=${{ matrix.framework }}
+      - name: Publish self-contained release binary
+        run: dotnet publish MoreCars.Companion.csproj --configuration Release --framework ${{ matrix.framework }} --runtime ${{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false --no-restore --output published -warnaserror
+      - name: Run Windows safety and install lifecycle tests
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $env:MORECARS_DATA_HOME = Join-Path $env:RUNNER_TEMP "morecars-e2e"
+          $artifact = (Resolve-Path .\published\MoreCarsCompanion.exe).Path
+          $installRoot = Join-Path $env:MORECARS_DATA_HOME "Xjk\MoreCarsCompanion"
+          $installed = Join-Path $installRoot "MoreCarsCompanion.exe"
+          $protocol = "Registry::HKEY_CURRENT_USER\Software\Classes\morecars"
+          $commandKey = Join-Path $protocol "shell\open\command"
+
+          function Invoke-Companion([string]$Path, [string[]]$Arguments) {
+            $process = Start-Process -FilePath $Path -ArgumentList $Arguments -PassThru -Wait
+            if ($process.ExitCode -ne 0) {
+              throw "$Path $($Arguments -join ' ') exited $($process.ExitCode)."
+            }
+          }
+
+          function Wait-UntilRemoved([string[]]$Paths) {
+            $deadline = [DateTime]::UtcNow.AddSeconds(15)
+            while (($Paths | Where-Object { Test-Path -LiteralPath $_ }) -and [DateTime]::UtcNow -lt $deadline) {
+              Start-Sleep -Milliseconds 250
+            }
+          }
+
+          try {
+            Invoke-Companion $artifact @("--self-test")
+            Invoke-Companion $artifact @("--install", "--quiet")
+            if (-not (Test-Path -LiteralPath $installed -PathType Leaf)) { throw "Installed executable is missing." }
+            if (-not (Test-Path -LiteralPath $commandKey)) { throw "morecars:// registration is missing." }
+            $expectedCommand = "`"$installed`" `"%1`""
+            if ((Get-ItemPropertyValue -LiteralPath $commandKey -Name "(default)") -ne $expectedCommand) {
+              throw "morecars:// command does not target the installed executable."
+            }
+            if ((Get-FileHash $artifact -Algorithm SHA256).Hash -ne (Get-FileHash $installed -Algorithm SHA256).Hash) {
+              throw "Installed executable differs from the published artifact."
+            }
+
+            Invoke-Companion $installed @("--uninstall", "--quiet")
+            Wait-UntilRemoved @($installRoot, $protocol)
+            if (Test-Path -LiteralPath $installRoot) { throw "Full uninstall retained the data directory." }
+            if (Test-Path -LiteralPath $protocol) { throw "Full uninstall retained morecars:// registration." }
+
+            Invoke-Companion $artifact @("--install", "--quiet")
+            New-Item -ItemType Directory -Path (Join-Path $installRoot "cache") -Force | Out-Null
+            Set-Content -LiteralPath (Join-Path $installRoot "settings.json") -Value "settings marker"
+            Set-Content -LiteralPath (Join-Path $installRoot "cache\cache.marker") -Value "cache marker"
+            Invoke-Companion $installed @("--uninstall", "--keep-data", "--quiet")
+            Wait-UntilRemoved @($installed, $protocol)
+            if (Test-Path -LiteralPath $installed) { throw "Keep-data uninstall retained the executable." }
+            if (Test-Path -LiteralPath $protocol) { throw "Keep-data uninstall retained morecars:// registration." }
+            if (-not (Test-Path -LiteralPath (Join-Path $installRoot "settings.json"))) { throw "Keep-data uninstall removed settings." }
+            if (-not (Test-Path -LiteralPath (Join-Path $installRoot "cache\cache.marker"))) { throw "Keep-data uninstall removed cache." }
+
+            Invoke-Companion $artifact @("--uninstall", "--quiet")
+            if (Test-Path -LiteralPath $installRoot) { throw "Final cleanup retained the data directory." }
+          }
+          finally {
+            if (Test-Path -LiteralPath $protocol) { Remove-Item -LiteralPath $protocol -Recurse -Force }
+            if (Test-Path -LiteralPath $env:MORECARS_DATA_HOME) { Remove-Item -LiteralPath $env:MORECARS_DATA_HOME -Recurse -Force }
+          }
+      - name: Run Linux safety and install lifecycle tests
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          artifact="$PWD/published/MoreCarsCompanion"
+          chmod 755 "$artifact"
+          "$artifact" --self-test
+
+          export XDG_DATA_HOME="$RUNNER_TEMP/morecars-xdg/data"
+          export XDG_CONFIG_HOME="$RUNNER_TEMP/morecars-xdg/config"
+          export XDG_CACHE_HOME="$RUNNER_TEMP/morecars-xdg/cache"
+          export MORECARS_XDG_LOG="$RUNNER_TEMP/morecars-xdg/xdg-mime.log"
+          shim="$RUNNER_TEMP/morecars-bin"
+          trackmania="$RUNNER_TEMP/Trackmania"
+          mkdir -p "$shim" "$trackmania/GameData"
+          cat > "$shim/xdg-mime" <<'SH'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          [[ "$*" == "default morecars-companion.desktop x-scheme-handler/morecars" ]]
+          printf '%s\n' "$*" >> "$MORECARS_XDG_LOG"
+          SH
+          cat > "$shim/update-desktop-database" <<'SH'
+          #!/usr/bin/env bash
+          exit 0
+          SH
+          chmod 755 "$shim/xdg-mime" "$shim/update-desktop-database"
+          export PATH="$shim:$PATH"
+
+          install_root="$XDG_DATA_HOME/Xjk/MoreCarsCompanion"
+          installed="$install_root/MoreCarsCompanion"
+          desktop="$XDG_DATA_HOME/applications/morecars-companion.desktop"
+
+          "$artifact" --install --trackmania-root "$trackmania" --quiet
+          test -x "$installed"
+          test -f "$desktop"
+          grep -Fx "default morecars-companion.desktop x-scheme-handler/morecars" "$MORECARS_XDG_LOG"
+          test "$(sha256sum "$artifact" | cut -d' ' -f1)" = "$(sha256sum "$installed" | cut -d' ' -f1)"
+
+          "$installed" --uninstall --quiet
+          test ! -e "$install_root"
+          test ! -e "$XDG_CONFIG_HOME/Xjk/MoreCarsCompanion"
+          test ! -e "$XDG_CACHE_HOME/Xjk/MoreCarsCompanion"
+          test ! -e "$desktop"
+
+          "$artifact" --install --trackmania-root "$trackmania" --quiet
+          mkdir -p "$XDG_CACHE_HOME/Xjk/MoreCarsCompanion"
+          printf 'cache marker\n' > "$XDG_CACHE_HOME/Xjk/MoreCarsCompanion/cache.marker"
+          "$installed" --uninstall --keep-data --quiet
+          test ! -e "$installed"
+          test ! -e "$desktop"
+          test -f "$XDG_CONFIG_HOME/Xjk/MoreCarsCompanion/settings.json"
+          test -f "$XDG_CACHE_HOME/Xjk/MoreCarsCompanion/cache.marker"
+
+          "$artifact" --uninstall --quiet
+          test ! -e "$install_root"
+          test ! -e "$XDG_CONFIG_HOME/Xjk/MoreCarsCompanion"
+          test ! -e "$XDG_CACHE_HOME/Xjk/MoreCarsCompanion"
+      - name: Package verified Linux artifact
+        if: runner.os == 'Linux'
+        shell: bash
+        run: tar -czf MoreCarsCompanion-linux-x64.tar.gz -C published MoreCarsCompanion
+      - name: Upload verified Windows artifact
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: more-cars-companion-windows
+          path: published/MoreCarsCompanion.exe
+          if-no-files-found: error
+      - name: Upload verified Linux artifact
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: more-cars-companion-linux
+          path: MoreCarsCompanion-linux-x64.tar.gz
+          if-no-files-found: error

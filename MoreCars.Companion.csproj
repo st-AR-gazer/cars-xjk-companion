@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net8.0-windows</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>MoreCarsCompanion</AssemblyName>
+    <RootNamespace>MoreCars.Companion</RootNamespace>
+    <Version>0.3.1</Version>
+    <Authors>st-AR-gazer</Authors>
+    <Company>st-AR-gazer</Company>
+    <Product>More Cars Companion</Product>
+    <AssemblyTitle>More Cars Companion</AssemblyTitle>
+    <Description>Safely installs and manages the cars.xjk.yt Trackmania car release.</Description>
+    <RepositoryUrl>https://github.com/st-AR-gazer/cars-xjk-companion</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+</Project>
