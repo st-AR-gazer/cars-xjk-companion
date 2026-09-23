@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net8.0-windows</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>MoreCarsCompanion</AssemblyName>
+    <RootNamespace>MoreCars.Companion</RootNamespace>
+    <Version>0.6.5</Version>
+    <Authors>st-AR-gazer</Authors>
+    <Company>st-AR-gazer</Company>
+    <Product>More Cars Companion</Product>
+    <AssemblyTitle>More Cars Companion</AssemblyTitle>
+    <Description>Safely installs and manages the cars.xjk.yt Trackmania car release.</Description>
+    <RepositoryUrl>https://github.com/st-AR-gazer/cars-xjk-companion</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="native/**/*.cs" />
+    <Compile Include="native/GameProfile.cs;native/GameMemory.cs;native/GameSnapshot.cs;native/NativeSession.cs;native/NativeSkinClient.cs;native/NativeSkinStage.cs;native/SkinCommitProtocol.cs" Link="Native/%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows' and Exists('native/bin/Release/net8.0/MoreCars.GameRuntime.dll')">
+    <EmbeddedResource Include="native/bin/Release/net8.0/MoreCars.GameRuntime.dll" LogicalName="MoreCars.GameRuntime.dll" />
+  </ItemGroup>
+  <Target Name="RequireNativeSkinRuntime" BeforeTargets="PrepareForBuild" Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <Error Condition="!Exists('native/bin/Release/net8.0/MoreCars.GameRuntime.dll')" Text="Build the bundled game runtime first: native/build-runtime.ps1" />
+  </Target>
+</Project>

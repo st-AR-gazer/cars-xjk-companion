@@ -1,0 +1,20 @@
+{
+  "schema": "morecars.native-evidence.v1",
+  "kind": "frame-observation",
+  "observedAt": "2026-09-10T11:38:49.0670561+00:00",
+  "sourceArtifact": "observe-20260910-133845.json",
+  "gameVersion": "2026.2.2.1751",
+  "executableSha256": "3fc7d8cda542beda131c44306b123f4004d07d7e22f512b46b762afc29f6edda",
+  "nativeLibrarySha256": "521d649dd7463aff8c5321d0f539fcd1d82b1be7deac8ae444e86d9261c5c307",
+  "firstFrame": 31,
+  "lastFrame": 152,
+  "finalFrame": 152,
+  "oneThread": true,
+  "mixedThreads": 0,
+  "faults": 0,
+  "originalCallbackRestored": true,
+  "stopSucceeded": true,
+  "fidRefreshTested": false,
+  "skinArchivesChanged": false,
+  "cleanGameWithoutOpenplanetTested": false
+}

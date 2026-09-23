@@ -1,0 +1,32 @@
+{
+  "schema": "morecars.livery-pipeline-check.v1",
+  "results": [
+    {
+      "carId": "snow",
+      "name": "Snow NyanCat",
+      "skinId": "2lR_VImOCU25_oBazbJGhQ",
+      "bodySha256": "434807b5994b6d0f476b4f3891025561898b082cc426046a7eed842cbff5b810",
+      "previewMatchesGameArchive": true,
+      "nonTextureEntriesPreserved": 13
+    },
+    {
+      "carId": "canyon",
+      "name": "RES_RAUM_E-SPORTS_Canyon_Car",
+      "skinId": "fyu0T1PwOUWvP3PgGBamnA",
+      "bodySha256": "eb2c53043650fd00aec7f9550a8c57f54030a549a83942ed318d0065a854a680",
+      "previewMatchesGameArchive": true,
+      "nonTextureEntriesPreserved": 14
+    },
+    {
+      "carId": "coast",
+      "name": "CoastCar Sunrise HD",
+      "skinId": "bWGk8WOQl0y9xp0ER0I0Ug",
+      "bodySha256": "b370351e88dd6a3646d719d9178642633d712bc9e0caafccdc22aec2ccda8e35",
+      "previewMatchesGameArchive": true,
+      "nonTextureEntriesPreserved": 29
+    }
+  ],
+  "gameFilesChanged": false,
+  "coastModel": "CoastCar HD",
+  "source": "Real ManiaPark liveries, browser DDS decoder, compiled companion composer; only workspace output files written."
+}
