@@ -1,0 +1,26 @@
+{
+  "schema": "morecars.native-skin-acceptance.v1",
+  "observedAt": "2026-09-10T15:21:12.1954972+02:00",
+  "gameVersion": "2026.2.2.1751",
+  "executableSha256": "3fc7d8cda542beda131c44306b123f4004d07d7e22f512b46b762afc29f6edda",
+  "nativeLibrarySha256": "8bc530b33381e03d7709729bfe223a52c2919d519ac954d867e3824684f635e9",
+  "carId": "snow",
+  "archiveSha256": "471aa546f8b824e6b91654da235f131ea7b70ae6d104208b697180da75b202db",
+  "archiveByteSize": 5510142,
+  "initialGameState": "menu",
+  "sameSkinBytes": true,
+  "receipt": {
+    "transactionId": "f988cd3024ee9f0175be434e01affdb6",
+    "gameThreadId": 50608,
+    "filesVerified": true,
+    "fidsRefreshed": true,
+    "callbackRestored": true,
+    "runtimeStopped": true
+  },
+  "accepted": true,
+  "journalRemoved": true,
+  "stagingPartialRemoved": true,
+  "visibleLiveryChangeTested": false,
+  "mapExitTested": false,
+  "cleanGameTested": false
+}

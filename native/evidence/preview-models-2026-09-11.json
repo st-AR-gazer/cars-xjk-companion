@@ -1,0 +1,83 @@
+{
+  "schema": "morecars.preview-model-parity.v1",
+  "releaseId": "legacy-cars-2026-09-09.1",
+  "models": [
+    {
+      "carId": "bay",
+      "modelId": "bay",
+      "archiveSha256": "441d2544fabca9c65d8ca12288ea1c4e915c4b4451f966ef3545bd34a538ccdd",
+      "geometrySha256": "faeb54b04161b83f59652a878c1481c5437902eaa5d78a5b07894793e0ea401e",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "canyon",
+      "modelId": "canyon",
+      "archiveSha256": "f31e0629b01c5e2ee8567d4530d41fe1757f5385a00d423a332513c2a7d260a5",
+      "geometrySha256": "a5619c4514032ea7ce843eb6ee6279e181e42e35c9d431c327bd14b1eef3a2ba",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "coast",
+      "modelId": "coast",
+      "archiveSha256": "83fa5ed2a056f0737260f8f33f703b1ee1217b923f0d85d7d7a5de50c7045018",
+      "geometrySha256": "7e6ad19638699e5c0200e815e9c436992d0348038fcc2f93bd9362cde1fe3184",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "desert",
+      "modelId": "desert-tmu",
+      "archiveSha256": "08d9a6e5b6846d90cd4bb9ed07bed21bb0359c26da63fc3a7b314706f9ab6a65",
+      "geometrySha256": "13fe7d88bf7a3332a2aa67474629fea974ec2e680c4da5b6e59ddf563c4ffed0",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "island",
+      "modelId": "island",
+      "archiveSha256": "bf564adb4b234af15b7e551cc8e36bb86284ef36581dbd9caf93abf9899bb84e",
+      "geometrySha256": "e085c3f7641f1b59547d3caed67264b3c62a1533ac18b057ea4683eafef4e012",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "lagoon",
+      "modelId": "lagoon",
+      "archiveSha256": "ef6d3001a162eaddcf6ccd5457db2d19dfa959ed48343424aa051dc5d09ceb79",
+      "geometrySha256": "d51b0a0d45926ffdd7f7bb44f3a25edb74329ff85d48175662506a84d5b337a1",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "rally",
+      "modelId": "rally-tmu",
+      "archiveSha256": "1a2b7962f213b5c7b56f5e41ce98e891ee8e380861dbefdfc6e6add84be397f0",
+      "geometrySha256": "414dd63d5ca7f12143495230f6abe2fae11cce19ace4e35d63cff56584d838b4",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "snow",
+      "modelId": "snow-tmu",
+      "archiveSha256": "471aa546f8b824e6b91654da235f131ea7b70ae6d104208b697180da75b202db",
+      "geometrySha256": "ffe8e6369070817c21bb792640c9742b631eb02238c61388e3191a9c54239b32",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "stadium",
+      "modelId": "stadium-tmu",
+      "archiveSha256": "b6832f378d074202fe607b5a8f57b0af225959cf5cbec78fd03576203dd5f4cb",
+      "geometrySha256": "9fed36e1caddb00091412fa08d1459a726b1d84cc1ffd6d6a0df00de720e6ea3",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "traffic",
+      "modelId": "traffic",
+      "archiveSha256": "151f0ba2b7a93c92f82e1ec168c7023e972fc9ababc35bfc83c93e20377ae947",
+      "geometrySha256": "c0b65b934597152a99a2747a403308c03b94a35b818e12426f8c74ed3562c95b",
+      "matchesPackagedModel": true
+    },
+    {
+      "carId": "valley",
+      "modelId": "valley",
+      "archiveSha256": "53a718a4ae45f749aa47eaa9d79176a9fc61c5a88a908d92043efae47ea32337",
+      "geometrySha256": "233691da14092637f378c82c454f71b973726367dc93fc7636d0dcc22ca9e73e",
+      "matchesPackagedModel": true
+    }
+  ]
+}

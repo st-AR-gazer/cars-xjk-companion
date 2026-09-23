@@ -1,0 +1,222 @@
+{
+  "schema": "morecars.companion-release-notes.v1",
+  "releases": [
+    {
+      "version": "0.6.5",
+      "publishedAt": "2026-09-23T20:05:00Z",
+      "title": "Original cameras with Stadium alternatives",
+      "summary": "Eleven classic cars receive the tested original camera defaults and Stadium alternative cameras.",
+      "changes": [
+        {
+          "kind": "improved",
+          "title": "Camera choices for all cars",
+          "description": "The managed car release includes original Cam 1, 2, and 3 plus Stadium Alt Cam 1 and 2 on all eleven classic cars. Trackmania loads changed tunings on the next game start."
+        },
+        {
+          "kind": "improved",
+          "title": "Keep matching local camera files",
+          "description": "If your installed camera tuning exactly matches this release, the companion adopts it without replacing it. Unknown local edits still require review."
+        }
+      ]
+    },
+    {
+      "version": "0.6.4",
+      "publishedAt": "2026-09-23T16:27:00Z",
+      "title": "Install updates from the game-start notice",
+      "summary": "After Trackmania opens, the companion can install a verified update from its desktop notice and show the result.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Install from the desktop",
+          "description": "Choose Install in the update notice to download and verify a newer companion, or to install managed car files when no local changes block them. Not now leaves the game running."
+        },
+        {
+          "kind": "improved",
+          "title": "Clear completion status",
+          "description": "The companion confirms its new version after replacement. Car updates report that files are installed and that Trackmania may load changed assets on its next start."
+        },
+        {
+          "kind": "improved",
+          "title": "Preserve local edits",
+          "description": "Changed car files, including custom camera tunings, are offered for review instead of being overwritten by the desktop install action."
+        }
+      ]
+    },
+    {
+      "version": "0.6.3",
+      "publishedAt": "2026-09-23T15:42:00Z",
+      "title": "Update notices when Trackmania starts",
+      "summary": "The desktop companion checks for a newer companion and missing or changed managed cars when Trackmania opens.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Desktop update window",
+          "description": "See release notes when the game starts, then choose to review the update or leave it for later. The notice returns on a later game launch while the update is pending."
+        },
+        {
+          "kind": "improved",
+          "title": "Car repair reminder",
+          "description": "The same window points to Repair files when managed car files are missing or changed. Repair still requires confirmation on the website."
+        }
+      ]
+    },
+    {
+      "version": "0.6.2",
+      "publishedAt": "2026-09-23T14:02:00Z",
+      "title": "New factory colours and icons",
+      "summary": "The eleven managed cars now use the updated factory palette, with matching factory icons and safe upgrades for installed community skins.",
+      "changes": [
+        {
+          "kind": "improved",
+          "title": "Updated factory palette",
+          "description": "Repair files applies the new colours to every classic car while preserving a verified community livery."
+        },
+        {
+          "kind": "improved",
+          "title": "Matching factory icons",
+          "description": "Factory, Current, and simple icon DDS files now match the new car colours. Community skin icons remain selected during a compatible update."
+        }
+      ]
+    },
+    {
+      "version": "0.6.1",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "title": "Car thumbnails beside the ZIPs",
+      "summary": "Each classic car now has a factory thumbnail, and selecting a community skin updates its current thumbnail for cups and other tools.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Three thumbnails for every car",
+          "description": "Repair files adds Factory, Current, and simple Icon DDS files beside each car ZIP. The manual cars ZIP includes them too."
+        },
+        {
+          "kind": "improved",
+          "title": "Current icon follows your skin",
+          "description": "When a selected livery includes Icon.dds, the companion copies it to Current and the simple icon. If it has no usable icon, both use the factory render."
+        },
+        {
+          "kind": "fixed",
+          "title": "Restore the factory icon",
+          "description": "Restoring one or all factory skins also resets their Current and simple thumbnails."
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "publishedAt": "2026-09-11T07:53:55.0228150+00:00",
+      "title": "ManiaPark skins and native refresh",
+      "summary": "Preview real liveries in 3D and apply them with the standalone Windows companion. Native refresh is a development preview; visible next-map results are still being verified.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Apply skins at the menu",
+          "description": "On supported Trackmania builds, a prepared skin waits until you leave the map or editor, then refreshes the game's files for your next map. Openplanet is not required."
+        },
+        {
+          "kind": "improved",
+          "title": "Reset defaults without restarting",
+          "description": "Reset one car or all installed cars through the same menu-time refresh. Other game builds retain the close-game fallback."
+        },
+        {
+          "kind": "improved",
+          "title": "Recover interrupted skin changes",
+          "description": "Skin files and their installation record are verified and committed together. Original files remain available until completion is confirmed."
+        },
+        {
+          "kind": "fixed",
+          "title": "Previews use the packaged cars",
+          "description": "The garage now uses the same model files as the installed vehicles, so selected liveries align with the actual car bodies."
+        },
+        {
+          "kind": "fixed",
+          "title": "Matching Coast HD liveries",
+          "description": "Coast shows liveries for its HD model and correctly combines their paint with the retained secondary details."
+        }
+      ]
+    },
+    {
+      "version": "0.5.2",
+      "publishedAt": "2026-09-09T19:00:00Z",
+      "title": "Updates that reconnect",
+      "summary": "Shorter download names and a more reliable connection after updating.",
+      "changes": [
+        {
+          "kind": "fixed",
+          "title": "The update connects again",
+          "description": "New companions negotiate supported controls with the website, so an older service no longer rejects their connection reports."
+        },
+        {
+          "kind": "improved",
+          "title": "Short, recognisable filenames",
+          "description": "Downloads include the version and an eight-character ID. Setup details travel inside the EXE, so renaming the download keeps automatic pairing working."
+        },
+        {
+          "kind": "improved",
+          "title": "Clear download and reconnect feedback",
+          "description": "Follow download progress and verification, then reconnect from the update modal if the new version takes longer to appear."
+        },
+        {
+          "kind": "fixed",
+          "title": "Opening a download twice",
+          "description": "The companion remembers a successful pairing and waits for the previous version to finish closing before replacing it."
+        }
+      ]
+    },
+    {
+      "version": "0.5.1",
+      "publishedAt": "2026-09-09T00:00:00Z",
+      "title": "A fresh coat of factory paint",
+      "summary": "Restore a car's default colour or reset your whole collection from the car catalogue.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Reset all skins",
+          "description": "The catalogue options menu can restore the packaged defaults for all installed managed cars in one operation."
+        },
+        {
+          "kind": "fixed",
+          "title": "Reset means the actual default",
+          "description": "Reset downloads the current factory skin, even when the car was already marked as using its default or still had an older default."
+        },
+        {
+          "kind": "improved",
+          "title": "Clear progress and recovery",
+          "description": "Review the reset before it starts, follow its progress, and see when it is complete. Interrupted resets preserve the original skins for recovery."
+        }
+      ]
+    },
+    {
+      "version": "0.5.0",
+      "publishedAt": "2026-09-09T00:00:00Z",
+      "title": "Factory colours and a smoother setup",
+      "summary": "Your classic cars get their catalogue colours, setup is clearer, and future updates appear right here.",
+      "changes": [
+        {
+          "kind": "new",
+          "title": "Real factory colours",
+          "description": "Eleven classic cars now include their catalogue colours. Use Repair files after updating to apply them to existing cars."
+        },
+        {
+          "kind": "improved",
+          "title": "Your skins stay yours",
+          "description": "Repair keeps recognised community skins. Restore factory skin selects the new coloured default."
+        },
+        {
+          "kind": "fixed",
+          "title": "A fresh start when reinstalling",
+          "description": "Reinstallation waits for the new EXE instead of picking up an old uninstall job or spent connection link."
+        },
+        {
+          "kind": "improved",
+          "title": "A clearer installation wizard",
+          "description": "Animated step indicators, a proper progress bar, and explicit game-folder confirmation keep setup easy to follow."
+        },
+        {
+          "kind": "new",
+          "title": "Updates on this page",
+          "description": "The running companion reports its version. When an update is ready, you can read the changes and download it here."
+        }
+      ]
+    }
+  ]
+}

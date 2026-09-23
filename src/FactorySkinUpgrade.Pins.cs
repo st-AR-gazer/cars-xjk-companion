@@ -1,0 +1,23 @@
+namespace MoreCars.Companion;
+
+internal static partial class FactorySkinUpgrade
+{
+    internal const string ReleaseId = "legacy-cars-2026-09-23.2";
+    internal const long ReleaseByteSize = 4493;
+    internal const string ReleaseSha256 = "d6b281103b462f77dd13d4ff6fb3d7e2f7f3a9098818cd01fd0390b6da628489";
+    private static readonly IReadOnlyDictionary<string, (string Source, string Previous, string Target)> CompatibleArchives =
+        new Dictionary<string, (string Source, string Previous, string Target)>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["GameData/Vehicles/Skins/BayCar.zip"] = ("7006334068f97036bbb70083a4e4362b7560c19c09ab165959f6568c044bb373", "441d2544fabca9c65d8ca12288ea1c4e915c4b4451f966ef3545bd34a538ccdd", "c413614f062128459cf2c4687081740f6b85d574120f089c2f190fe86ce863d1"),
+            ["GameData/Vehicles/Skins/HDModelPainted_CanyonCar.zip"] = ("4c1c0eed9e4f91be44229e2947631dd6e499a83c540a3ca7631e2a8713abd08c", "f31e0629b01c5e2ee8567d4530d41fe1757f5385a00d423a332513c2a7d260a5", "b2aeca469598cdcee8a1c041502f1f09d24c6b09ad789e9732eca1b1d63cb004"),
+            ["GameData/Vehicles/Skins/CoastCar.zip"] = ("be56c3d42543208f2d9ed713b7c79afafdf53889ce5bc23ec32c99cdf1144836", "83fa5ed2a056f0737260f8f33f703b1ee1217b923f0d85d7d7a5de50c7045018", "4d8a59f647ec9180df3018893f7e4c597aeb257176b6700cf71c81eda7cdaa0f"),
+            ["GameData/Vehicles/Skins/DesertCar.zip"] = ("eed4f2a448f4002a2ad974d756b781cb897200be70b22fc2bf2bc2e7de3b3042", "08d9a6e5b6846d90cd4bb9ed07bed21bb0359c26da63fc3a7b314706f9ab6a65", "45115532a2c04e1243d9087a636a19f1c27e8e61fe622cfdcca60019ac3de59c"),
+            ["GameData/Vehicles/Skins/IslandCar.zip"] = ("473af5f0fc43908176cc73d90481127e74c8e82ad228562eb72474afa1c631dc", "bf564adb4b234af15b7e551cc8e36bb86284ef36581dbd9caf93abf9899bb84e", "4680d0d846025473cf678c397d21de892c5a9f666541df6c2e4bee3d2f918ef9"),
+            ["GameData/Vehicles/Skins/HDModelPainted_LagoonCar.zip"] = ("ae6bd939ab5a99f8fe4b2e6c0e48b740047a048c15b12f90775b96cec1e8acda", "ef6d3001a162eaddcf6ccd5457db2d19dfa959ed48343424aa051dc5d09ceb79", "a86bf84f4bc06443aaf26acff33dc83e5240c2e613996baae85a31eee0118520"),
+            ["GameData/Vehicles/Skins/RallyCar.zip"] = ("5b1fb30d97f12be3fa83650e9e6a54d83c59fed9215d7c935c1efc8fb35a4871", "1a2b7962f213b5c7b56f5e41ce98e891ee8e380861dbefdfc6e6add84be397f0", "4b71f1af0bba43c72e2af4df664e5d8ee02f77d7c20d1633ad594b5341541da2"),
+            ["GameData/Vehicles/Skins/SnowCar.zip"] = ("33ef81ee037643fbb6bb89a33b2c09a41cb2f74ea3eaa9c7fd9e5ad41d405c3c", "471aa546f8b824e6b91654da235f131ea7b70ae6d104208b697180da75b202db", "aa2f99f5283b1f42bc73616f9177c66ebbee3458f74f5b3199901435698c77d4"),
+            ["GameData/Vehicles/Skins/StadiumCar.zip"] = ("b4897e2b8713694cfc7b22702cef51f8a34c648e6b3e46126fea5e68ee31f4dc", "b6832f378d074202fe607b5a8f57b0af225959cf5cbec78fd03576203dd5f4cb", "90fa52906b3e0fd8661f94c8f27de6eca80bc00976af12c5f30e4122a9562627"),
+            ["GameData/Vehicles/Skins/TrafficCar.zip"] = ("870a5b8513257532b968ba54fad481cd0a322d8ee679314c7fba33e65f7ee791", "151f0ba2b7a93c92f82e1ec168c7023e972fc9ababc35bfc83c93e20377ae947", "ee845e8d4504ebe29893720a627502b6372de3bb3ed2f75b68d9287e910064e0"),
+            ["GameData/Vehicles/Skins/ValleyCar.zip"] = ("36153c3ac47f40e3ae5bcbb2ffb8f54124ceb865a3b4941e804cc51675b099aa", "53a718a4ae45f749aa47eaa9d79176a9fc61c5a88a908d92043efae47ea32337", "22570a19e68c96becb79dc9b89dd4a5f7d9e1e0aec059ee67636ab1a056a9269"),
+        };
+}

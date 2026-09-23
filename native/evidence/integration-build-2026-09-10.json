@@ -1,0 +1,43 @@
+{
+  "schema": "morecars.native-integration-build.v1",
+  "observedAt": "2026-09-10T15:04:46.9699398+02:00",
+  "version": "0.6.0",
+  "executableSha256": "50b8ffcc087d1276d0b72521dfd1f7bbd2c058988475b9e3b8b7f7c92d7f2ba0",
+  "nativeLibrarySha256": "8bc530b33381e03d7709729bfe223a52c2919d519ac954d867e3824684f635e9",
+  "checks": {
+    "profileReader": 10,
+    "windowsExeProtocolSmoke": true,
+    "frontend": 31,
+    "nativeQueueLifecycle": 12,
+    "managedRecoveryScenarios": 7,
+    "nativeTransactions": 10,
+    "windowsExeSelfTest": true
+  },
+  "buildWarnings": [
+    "NuGet vulnerability audit unavailable: NU1900; compilation and publishing succeeded."
+  ],
+  "publicDownloadVersion": "0.5.2",
+  "releaseAccepted": false,
+  "pendingAcceptance": [
+    "Changed livery visible after map/editor exit",
+    "Clean-game run without Openplanet",
+    "Individual/all-default reset and restart lifecycle in the real game"
+  ],
+  "sourceSha256": {
+    "apps/more-cars-native/SkinTransaction.h": "3e205d55cfe6c79bb433a19ff6639c187bdc4bd2e67a68f13cf90a02486ebd07",
+    "apps/more-cars-native/GameRuntime.cpp": "a3f64319f109b14eaaf2babe7adfb77a57215a5e2224018254337309281b75dd",
+    "apps/more-cars-native/SkinTransaction.cpp": "3651e0a74bedad83bc5083c7388afee4d4ce513982d8b79885b75e77b1fb0a3e",
+    "apps/more-cars-companion/CompanionNativeSkins.cs": "85516b7ef377568cfec1935bec9241c8465b2fad0527174410943dd4b62ad520",
+    "apps/more-cars-native/GameProfile.cs": "80142db26ce73b36a14fd8de846beaf3024572ec0624c8c67aba655f0d60c313",
+    "apps/more-cars-native/NativeSession.cs": "197744c347cd724b87cef1bc5fcbd8e9c6669486eeb99345c6c01b848324163b",
+    "apps/more-cars-companion/CompanionCommandRunner.cs": "f05a730e6b9cca915e4aa1f0e225a3f63fe08c2d4d53418cef0d61a6c065a650",
+    "apps/more-cars-companion/ReleaseInstaller.cs": "6bad7dac6eb11583be51cbafe60ac1ba57279d2c4102a4a8040483c7a59160d6",
+    "apps/more-cars-native/NativeSkinStage.cs": "2dc1f39ad18df58d09878726cba2d30437e57f1af68542439d0f11580d6bd2f2",
+    "apps/more-cars-companion/ReleaseInstaller.Reset.cs": "dee093025aca24e0be01d635bedd883b573ea11d33561bd1c819c3b50dcd36ae",
+    "apps/more-cars-native/FrameProbe.cpp": "db5d29b659e1fe0b01c7535df78e82b36430a83451ecc0c7fd683579f2ac1982",
+    "apps/more-cars-companion/MoreCars.Companion.csproj": "70fa0080a5783767beafe0bb3e22829b9b8f973f9ea1cc222c05f9213842c07b",
+    "apps/more-cars-native/SkinCommitProtocol.cs": "fd6b92ca730dcc550e9794ef8ac0f4f413b7c8a23917dc7710fd810ef21346f4",
+    "apps/more-cars-native/NativeSkinClient.cs": "5e1eb8d96b4ef3b27d2330e0fb7e2cb922a03b8a2185b7059d91aa2cffb96c6c"
+  },
+  "realArchiveReplacementEvidence": "skin-commit-2026-09-10.json"
+}

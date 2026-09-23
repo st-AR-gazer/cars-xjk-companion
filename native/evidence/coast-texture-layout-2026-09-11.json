@@ -1,0 +1,9 @@
+{
+  "schema": "morecars.coast-texture-layout.v1",
+  "modelId": "vzqaatQ6nkCtosjlw44cTg",
+  "sourceArchive": "GameData/Vehicles/Skins/CoastCar.zip",
+  "sourceArchiveSha256": "83fa5ed2a056f0737260f8f33f703b1ee1217b923f0d85d7d7a5de50c7045018",
+  "secondaryEntry": "WheelsDiffuse.dds",
+  "secondarySha256": "e124c8ff17aec9f0f9c722e7099820d2d9a5b3d1d0f4dc4304ef6c8433c4ca9e",
+  "previewLayout": "body and secondary textures in horizontal tiles"
+}
