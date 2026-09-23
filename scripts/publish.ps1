@@ -6,7 +6,8 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$artifactRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot "artifacts"))
+$repoRoot = Split-Path -Parent $PSScriptRoot
+$artifactRoot = [System.IO.Path]::GetFullPath((Join-Path $repoRoot "artifacts"))
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
   $OutputDirectory = Join-Path $artifactRoot $Runtime
 }
@@ -28,7 +29,7 @@ if (Test-Path -LiteralPath $staging) {
 New-Item -ItemType Directory -Path $staging | Out-Null
 
 try {
-  $project = Join-Path $PSScriptRoot "MoreCars.Companion.csproj"
+  $project = Join-Path $repoRoot "MoreCars.Companion.csproj"
   $declaredVersion = ([xml](Get-Content -LiteralPath $project -Raw)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
   dotnet restore $project `
     --runtime $Runtime `

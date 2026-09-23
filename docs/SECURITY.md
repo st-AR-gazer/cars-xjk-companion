@@ -106,7 +106,7 @@ default branch still matches an older binary.
 
 ## Scope of this review
 
-This document describes the source currently in this directory. It is not a
+This document describes the source in this repository. It is not a
 formal third-party security audit, a sandbox, or a guarantee that no defect
 exists. Report suspected vulnerabilities through the repository's private
 security-reporting channel when available; avoid publishing active exploit

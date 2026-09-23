@@ -2,7 +2,7 @@ param([switch]$TestsOnly)
 $ErrorActionPreference = 'Stop'
 $taskRoot = $PSScriptRoot
 $taskRepo = Split-Path -Parent $taskRoot
-$env:DOTNET_CLI_HOME = Join-Path $taskRepo '.codex-tmp\dotnet-native'
+$env:DOTNET_CLI_HOME = Join-Path $taskRepo '.build\dotnet-native'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
 $env:DOTNET_GENERATE_ASPNET_CERTIFICATE = 'false'
 dotnet build (Join-Path $taskRoot 'MoreCars.NativeProbe.csproj') -c Release --nologo -m:1

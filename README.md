@@ -7,9 +7,9 @@ source. Car release manifests, vehicle assets, manual ZIPs, and website
 downloads are generated in the Cars server workspace.
 Native archive replacement and FID refresh have passed in the real game. The
 website offers this as a development build; visible next-map skin changes and
-clean-game acceptance remain pending. See [GAME_RUNTIME.md](GAME_RUNTIME.md) for evidence and remaining
+clean-game acceptance remain pending. See [GAME_RUNTIME.md](docs/GAME_RUNTIME.md) for evidence and remaining
 plugin parity work. Windows builds are
-intentionally unsigned; read [WINDOWS_WARNING.md](WINDOWS_WARNING.md) for the
+intentionally unsigned; read [WINDOWS_WARNING.md](docs/WINDOWS_WARNING.md) for the
 plain-language reason, current certificate pricing, and safer alternatives.
 
 This Windows and Linux helper gives `cars.xjk.yt` a narrow, auditable bridge to
@@ -19,7 +19,7 @@ path. Linux installations may point at a Trackmania root inside a Wine or
 Proton prefix; the companion does not assume a particular launcher or prefix
 layout.
 
-Read [SECURITY.md](SECURITY.md) before distributing or running a published
+Read [SECURITY.md](docs/SECURITY.md) before distributing or running a published
 build. It inventories the executable's filesystem, network, persistence, and
 privacy behavior, including current limitations such as the unsigned Windows
 binary and locally stored bearer token.
@@ -27,7 +27,7 @@ binary and locally stored bearer token.
 The public review repository is
 <https://github.com/st-AR-gazer/cars-xjk-companion>.
 
-The project uses [The Unlicense](LICENSE). Review [PRIVACY.md](PRIVACY.md) for
+The project uses [The Unlicense](LICENSE). Review [PRIVACY.md](docs/PRIVACY.md) for
 the exact local and network data contract. GitHub Actions builds and tests
 Windows and Linux artifacts from reviewed source; the Cars server publishes
 its own versioned website downloads with exact hashes.
@@ -59,7 +59,7 @@ Run `MoreCarsCompanion.exe --preview-update-flow` to preview an example car
 update and its completion message. This simulation never downloads or installs.
 
 The catalogue can reset one or all installed car skins to their packaged
-defaults. See [SKIN_RESETS.md](SKIN_RESETS.md) for scope, recovery, and the
+defaults. See [SKIN_RESETS.md](docs/SKIN_RESETS.md) for scope, recovery, and the
 required service update for version 0.5.1.
 No service or startup entry is installed.
 
@@ -141,7 +141,7 @@ neither is installed, save the folder during the initial terminal installation:
 ## Factory skins
 
 The website checks the running companion's version and displays a release-notes
-modal when a newer EXE is available. See [UPDATES.md](UPDATES.md) for the version
+modal when a newer EXE is available. See [UPDATES.md](docs/UPDATES.md) for the version
 and release publication workflow.
 
 The current source installs `legacy-cars-2026-09-23.4`, whose eleven classic car
@@ -194,6 +194,20 @@ the companion always appends its owned `Xjk\MoreCarsCompanion` directory.
 The CLI keeps managed Trackmania cars. On the website, select **Also remove
 managed cars** when those files should be removed too.
 
+## Repository layout
+
+- `src/Companion/Core/` contains the app entry point, pairing, commands, storage, and platform integration.
+- `src/Companion/Game/` contains Trackmania discovery and native skin coordination.
+- `src/Companion/Installation/` contains car installation, skin archives, and pinned release data.
+- `src/Companion/Updates/` contains release checks, downloads, and startup update windows.
+- `tests/Companion/` contains the self-tests compiled into the companion and run with `--self-test`.
+- `native/` contains the independent Windows game runtime, probe, and its tests.
+- `docs/` contains security, privacy, release, and runtime notes; `scripts/` contains the publisher.
+
+The root project file and `release-notes.json` stay at stable paths used by the
+build and the Cars server's release process. Run the commands below from the
+repository root.
+
 Build locally with:
 
 ```powershell
@@ -203,13 +217,13 @@ dotnet build MoreCars.Companion.csproj -c Release -f net8.0-windows --no-restore
 dotnet build MoreCars.Companion.csproj -c Release -f net8.0 --no-restore
 ```
 
-The release publisher uses `publish.ps1` to create a self-contained, single-file
+The release publisher uses `scripts/publish.ps1` to create a self-contained, single-file
 Windows executable or a Linux tarball under `artifacts/`. The self-contained
 runtime packs must be available during publish:
 
 ```powershell
-.\publish.ps1 -Runtime win-x64
-.\publish.ps1 -Runtime linux-x64
+.\scripts\publish.ps1 -Runtime win-x64
+.\scripts\publish.ps1 -Runtime linux-x64
 ```
 
 GitHub Actions builds and tests Windows and Linux artifacts from this source.

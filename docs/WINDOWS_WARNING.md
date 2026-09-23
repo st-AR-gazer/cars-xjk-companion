@@ -41,7 +41,7 @@ That is a reasonable choice. Instead you can:
 3. Compare the downloaded file's SHA-256 with the value displayed by
    `cars.xjk.yt` and the successful GitHub Actions build.
 4. Remove the companion later with the copy-pasteable commands in
-   [Uninstall](README.md#uninstall).
+   [Uninstall](../README.md#uninstall).
 
 The detailed filesystem, network, persistence, and cleanup boundaries are in
 [SECURITY.md](SECURITY.md). The information sent to the Cars service is listed

@@ -11,7 +11,7 @@ flow. It does not contain the independent game hook and is not a complete port
 of MoreCars. Do not release it as full plugin parity.**
 
 The same game-integration limitation remains in the packaged `0.5.2` preview.
-The [native adapter prototype](native/README.md) now contains an
+The [native adapter prototype](../native/README.md) now contains an
 exact-build reader and an independent C++ after-main-loop/FID experiment.
 Read-only editor/menu/FID-tree validation passed on the installed game. The
 user's external observer run also verified actual callbacks on one game thread,
@@ -24,7 +24,7 @@ embeds the runtime in the Windows EXE. The file transaction, recovery, and build
 pass local checks. The external `SkinCommit` test also passed: an owned Snow
 archive and the ownership record were replaced with identical verified bytes,
 FIDs refreshed on the game thread, and the callback restored. See the
-[skin-commit evidence](native/evidence/skin-commit-2026-09-10.json).
+[skin-commit evidence](../native/evidence/skin-commit-2026-09-10.json).
 Visible next-map skins and a run without Openplanet are still pending. The website
 offers 0.6.0 as a development preview; this does not mark those checks as passed
 or claim full plugin parity.

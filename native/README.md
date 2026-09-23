@@ -171,7 +171,7 @@ Acceptance remaining before considering the development preview fully verified:
 2. Repeat without Openplanet loaded, then close/relaunch the game and companion.
 
 For the next website test, run the existing candidate at
-`../more-cars-companion/artifacts/win-x64/MoreCarsCompanion.exe` outside the Codex
+`../artifacts/win-x64/MoreCarsCompanion.exe` outside the Codex
 sandbox. It upgrades the local companion using the saved pairing. While driving
 a managed More Cars vehicle, choose a visibly different livery for that same
 vehicle on the website. It must remain queued until the map/editor is exited,
